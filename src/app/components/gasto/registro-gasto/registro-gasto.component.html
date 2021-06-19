@@ -1,1 +1,18 @@
-<p>registro-gasto works!</p>
+<!---->
+<div class="container">
+    <h1>Registrar un nuevo gasto</h1>
+    <p>Desde aqui podrá registrar un nuevo gasto</p>
+    <br>
+    <form [formGroup]="form" (ngSubmit)="guardarGasto()">
+        <mat-form-field appearance="fill">
+            <mat-label>Monto</mat-label>
+            <input matInput autocomplete="off" type="number" formControlName="monto">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Detalle</mat-label>
+            <input matInput autocomplete="off" type="text" formControlName="detalle">
+        </mat-form-field>
+        <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="guardarGasto()">Guardar</button>
+        <button mat-raised-button color="secondary" (click)="back()">Volver</button>
+    </form>
+</div>

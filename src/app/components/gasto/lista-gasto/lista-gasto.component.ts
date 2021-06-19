@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { GastoService } from 'src/app/gasto.service';
 import { Gasto } from 'src/app/models/Gasto';
 
@@ -12,7 +13,7 @@ export class ListaGastoComponent implements OnInit {
   total: number = 0;
   gastos?: Gasto[];
 
-  constructor(private gastoService: GastoService) { }
+  constructor(private gastoService: GastoService, private router: Router) { }
 
   ngOnInit(): void {
     this.gastoService.getGastos()
@@ -21,6 +22,10 @@ export class ListaGastoComponent implements OnInit {
         this.gastos.map(g => this.total += g.amount);
         console.log(this.gastos);
       }, error => console.log);
+  }
+
+  handleClick() {
+    this.router.navigateByUrl('/gastos/form');
   }
 
 }
