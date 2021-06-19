@@ -1,14 +1,30 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
+import { ListaGastoComponent } from './components/gasto/lista-gasto/lista-gasto.component';
+import { RegistroGastoComponent } from './components/gasto/registro-gasto/registro-gasto.component';
+import { FormsModule } from '@angular/forms';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    ListaGastoComponent,
+    RegistroGastoComponent,
+    NavbarComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
