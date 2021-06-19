@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GastoService } from 'src/app/gasto.service';
+import { Gasto } from 'src/app/models/Gasto';
 
 @Component({
   selector: 'app-lista-gasto',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaGastoComponent implements OnInit {
 
-  constructor() { }
+  total: number = 0;
+  gastos?: Gasto[];
+
+  constructor(private gastoService: GastoService) { }
 
   ngOnInit(): void {
+    this.gastoService.getGastos()
+      .subscribe(data => {
+        this.gastos = data;
+        this.gastos.map(g => this.total += g.amount);
+        console.log(this.gastos);
+      }, error => console.log);
   }
 
 }
